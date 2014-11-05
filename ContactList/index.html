@@ -1,0 +1,213 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>ContactList</title>
+
+    <!-- ContactList references -->
+    <link href="css/index.css" rel="stylesheet" />
+
+    <link href="css/contactmods.css" rel="stylesheet" />
+
+    <!-- Cordova reference, this is added to your app when it's built. -->
+    <script src="cordova.js"></script>
+    <script src="scripts/platformOverrides.js"></script>
+
+
+
+    <link rel="stylesheet" href="jquery-mobile/kind-green-crisp.min.css" />
+    <link rel="stylesheet" href="jquery-mobile/jquery.mobile.icons.min.css" />
+
+    <link rel="stylesheet" href="jquery-mobile/jqm-icon-pack-fa.css" />
+
+    <link rel="stylesheet" href="jquery-mobile/jquery.mobile.structure-1.4.3.min.css" />
+    <script src="jquery-mobile/jquery-1.11.1.min.js"></script>
+    <script>
+        $(document).on("mobileinit", function () {
+            $.mobile.pushStateEnabled = false;
+            $.mobile.defaultPageTransition = 'none';
+            $.mobile.defaultDialogTransition = 'none';
+            $.mobile.ajaxEnabled = false;
+
+    });
+    </script>
+
+    <script src="jquery-mobile/jquery.mobile-1.4.3.min.js"></script>
+
+    
+
+
+
+    <script src="scripts/index.js"></script>
+
+
+</head>
+<body>
+
+    <div data-role="page" id="ContactListPage" data-theme="d">
+
+        <div data-role="header" data-theme="c" data-position="fixed" data-tap-toggle="false" >
+            <h1>People</h1>
+            <a class="createContact" data-icon="plus" data-iconpos="left">Create</a>
+            <input type ="text" data-type="search" id="filterable-input" placeholder="Search Contact" data-mini="true" data-corners="true">
+
+
+        </div>
+
+        
+
+            <div id="recent" class="ui-content">
+
+                <ul id = "dividerRecent" data-divider-theme="e" data-role="listview" style="border:none !important; -webkit-box-shadow: none; box-shadow: none;">
+                    <li></li>
+                    <li data-role="list-divider">Recent Contacts</li>
+
+                </ul>
+                <div id="recentContacts" >
+
+
+                </div>
+
+            </div>
+            <div id="all" class="ui-content">
+                <ul id = "dividerAll" data-divider-theme="e" data-role="listview" style="border:none !important; -webkit-box-shadow: none; box-shadow: none;">
+
+                    <li></li>
+                    <li data-role="list-divider">All Contacts</li>
+
+                </ul>
+
+                <div id="allContacts" data-filter="true" data-input="#filterable-input">
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+ 
+
+    <div data-role="page" id="showContactPage" data-theme="c">
+        <div data-role="header" data-theme="c" data-position="fixed" data-tap-toggle="false">
+            <h1>Contact Information</h1>
+            <a class="goBack" data-icon="back" data-iconpos="left" data-clickload="spin">Back</a>
+
+            <a id="deleteContact" data-icon="delete" data-iconpos="left">Delete</a>
+        </div>
+        <div data-role="content" id="showContactContent">
+            <ul data-role="listview">
+                <li style="border:none !important"></li>
+                <li style="border:none !important">
+                    <center>
+                        <div id="circular">
+                            <img id="profilePic" />
+
+                        </div>
+
+                    </center>
+                    <p class="showDisplayName" style="border:none !important; text-align: center; color:#197419; font-size: 20px; font-weight: bold">
+
+
+                    </p>
+                </li>
+            </ul>
+            <ul data-role="listview" id="showContactInfo" >
+
+
+            </ul>
+
+
+        </div>
+    </div>
+
+    <div data-role="page" id="createContactPage" data-theme="c">
+        <div data-role="header" data-theme="c">
+            <h1>Add Contact</h1>
+            <a class="goBack" data-icon="back" data-iconpos="left" data-clickload="spin">Back</a>
+            <a data-icon="save" data-iconpos="left" id="save">Save</a>
+
+        </div>
+
+        <div data-role="content">
+
+            <ul data-role ="listview" data-inset="true" data-theme="c">
+
+                <li data-role="list-divider">Name</li>
+
+                <li style="border-top-width: 0px; border-bottom-width: 0px;">
+
+                    <img src="images/addcontacticon.png" id="user-image" >
+                 
+                       <input type="text" name="textinput-1" id="username" placeholder="Name" value="">
+
+                </li>
+                <li data-role="list-divider">Phone</li>
+                <li>
+                    <label for="tel">Mobile</label>
+                    <input type="tel" name="tel" id="mobile" value="">
+
+                </li>
+                <li data-role="list-divider">Email</li>
+
+                <li>
+                    <label for="tel">Work</label>
+
+                    <input type="text" name="textinput-1" id="email" placeholder="email id" value="">
+
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+
+
+
+    <div data-role="page" id="editContactPage" data-theme="c">
+        <div data-role="header" data-theme="c">
+            <h1>Contact List</h1>
+            <a class="goBack" data-icon="back" data-iconpos="left">Back</a>
+            <a data-icon="save" data-iconpos="left" id="editSave">Save</a>
+
+
+
+        </div>
+
+        <div data-role="content">
+
+            <ul data-role="listview" data-inset="true" data-theme="c">
+
+                <li data-role="list-divider">Name</li>
+
+                <li style="border-top-width: 0px; border-bottom-width: 0px;">
+
+                    <img id="edit-user-image">
+
+                    <input type="text" name="textinput-1" id="editusername" >
+
+                </li>
+                <li data-role="list-divider">Phone</li>
+                <li>
+                    <label for="tel">Mobile</label>
+                    <input type="tel" name="tel" id="editmobile" >
+
+                </li>
+                <li data-role="list-divider">Email</li>
+
+                <li>
+                    <label for="tel">Work</label>
+
+                    <input type="text" name="textinput-1" id="editemail"  >
+
+
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+
+
+</body>
+</html>
